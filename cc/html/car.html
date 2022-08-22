@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CAR DATA</title>
+        
+    </head>
+    <style>
+    #camera{
+        width: 350px;
+        height: 350px;
+        border: 1px solid black;
+    }
+    </style>
+    <body>
+        <div class="container">
+            <div class="apply_box">
+                <h1>
+                    Car DATA
+                    <span class="title_small">(Web)</span>
+                </h1>
+                <form action="">
+                    <div class="from_contain">
+                        <div class="from_control">
+                            <label for="Normal_Car">Normal Car</label>
+                            <select id="Normal_Car" name="Normal_Car" required>
+                                <option value="">Select Normal Car</option>
+                                <option value="Hatchback">Hatchback</option>
+                                <option value="Sedan">Sedan</option>
+                                <option value="SUV">SUV</option>
+                                <option value="MUV">MUV</option>
+                                <option value="No">NO</option>
+                            </select>
+
+                        </div>
+                        <div class="from_control">
+                            <label for="Sport_Car">Sport Car</label>
+                            <select id="Sport_Car" name="Sport_Car" required>
+                                <option value="">Select Sport Car</option>
+                                <option value="Coupe">Coupe</option>
+                                <option value="Convertibles">Convertibles</option>
+                                <option value="NO">NO</option>
+                                
+                            </select>
+
+                        </div>
+                        <div class="from_control">
+                            <label for="Work_Truck">Work Truck</label>
+                            <select id="Work_Truck" name="Work_Truck" required>
+                                <option value="">Select Sport Car</option>
+                                <option value="Pickup Truck">Pickup Truck</option>
+                                <option value="Trucks">Trucks</option>
+                                <option value="Tractor">Tractor</option>
+                                <option value="NO">NO</option>
+                                
+                            </select>
+
+                        </div>
+                        <div class="from_control">
+                            <label for="Car Model Year">Car Model Year</label>
+                            <input
+                            id="Car Model Year"
+                            name="Car Model Year"
+                            placeholder="enter the year..."
+                            required
+                            />
+
+                        </div>
+                        <div class="from_control">
+                            <label for="Car Model Version">Car Model Version</label>
+                            <input
+                            id="Car Model Version"
+                            name="Car Model Version"
+                            placeholder="enter the version..."
+                            required
+                            />
+
+                        </div>
+                        <div class="from_control">
+                            <label for="Front:Bonnet">Front:Bonnet</label>
+                            <input 
+                            id="Camera"
+                            required    
+                            />         </div>
+                            <button onclick="take_snapshot()">take_snapshot</button>
+                            <div id ="results"></div>
+                        
+
+
+
+                        <div class="from_control">
+                            <label for="Upload image">Upload image</label>
+                            <input
+                            type="image"
+                            id="Upload"
+                            name="Upload"
+                            
+                            required
+                            />
+
+                        </div>
+
+                        
+    
+                            
+                            
+                    
+                    <div class="button container">
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="~/Scripts/webcam.min.js"></script>
+    <script>
+        Webcam.set({
+            width:350,
+            height:350,
+            image_format:'jpeg',
+            jpeg_quality:90
+        });
+            Webcam.attach('#Camera')
+         
+        
+        function take_snapshot(){
+            Webcam.snap(function(data_uri){
+                document.getElementById('results').innerHTML=
+                `<img src='"
+                +data_uri+'"/>`;
+            });
+
+        }
+    </script>
+    </html>
